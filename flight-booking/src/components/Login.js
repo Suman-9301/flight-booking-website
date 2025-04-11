@@ -34,6 +34,7 @@ function Login() {
       if (response.ok) {
         if (result.username) {
           localStorage.setItem("username", result.username);
+          localStorage.setItem("email", result.email);
           alert("Login successful!");
           navigate("/");
         } else {
@@ -49,7 +50,7 @@ function Login() {
   };
 
   return (
-    <div className="max-w-lg mx-auto bg-white shadow-lg rounded-lg p-8">
+    <div className="max-w-lg mx-auto bg-gray-100 shadow-xl outline outline-black/5 rounded-lg p-8 my-10">
       <h1 className="text-3xl font-extrabold text-primary mb-6 text-center">
         Login
       </h1>
@@ -78,7 +79,7 @@ function Login() {
           type="submit"
           className="w-full bg-orange-500 text-textLight py-3 rounded-lg font-semibold hover:bg-orange-600 transition duration-300"
         >
-          Login
+          Login 
         </button>
         
         {/* Added register link */}

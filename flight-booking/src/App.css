@@ -38,12 +38,12 @@
 }
 
 /* App.css */
-.bg-landing {
+/* .bg-landing {
   background-image: url('./assets/landing.jpg');
   background-size: cover;
   background-position: center;
   
-}
+} */
 
 html {
   scroll-behavior: smooth;

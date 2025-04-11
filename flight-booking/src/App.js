@@ -1,40 +1,83 @@
 
-import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
+import React, { useRef } from 'react';
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import LandingPage from "./components/LandingPages";
 import MyBooking from "./components/MyBooking";
 import Login from "./components/Login";
 import Register from "./components/Register";
-import Navbar from "./components/Nav"; 
-
-import './App.css'; // Make sure to import the CSS file
+import Navbar from "./components/Nav";
+import SearchFlight from "./components/SearchFlight";
+import AboutUs from "./components/AboutUs";
+import Support from "./components/Support";
+import Footer from "./components/Footer";
+import './App.css';
 import MyProfile from './components/MyProfile';
+import Payment from './components/Payment';
 
-function App() {
+const AppWrapper = () => {
+  const location = useLocation();
+  const searchRef = useRef(null);
+  const aboutRef = useRef(null);
+  const supportRef = useRef(null);
 
-  const [bookedFlights, setBookedFlights] = useState([]); // State for booked flights
 
-  // Function to add a flight to bookings
-  const addBooking = (flightDetails) => {
-    setBookedFlights((prev) => [...prev, flightDetails]);
-  };
+  const scrollToSearch = () => searchRef.current?.scrollIntoView({ behavior: "smooth" });
+  const scrollToAbout = () => aboutRef.current?.scrollIntoView({ behavior: "smooth" });
+  const scrollToSupport = () => supportRef.current?.scrollIntoView({ behavior: "smooth" });
+
+  const isHomePage = location.pathname === "/" || location.pathname === "/home";
 
   return (
-    <Router>
-      <div className="min-h-screen bg-landing text-textDark">
-        {/* Navbar */}
-        <Navbar />
+    <div className="min-h-screen bg-landing text-textDark flex flex-col">
+      <Navbar
+        scrollToSearch={isHomePage ? scrollToSearch : undefined}
+        scrollToAbout={isHomePage ? scrollToAbout : undefined}
+        scrollToSupport={isHomePage ? scrollToSupport : undefined}
+      />
 
-        <div className="container mx-auto px-4 py-8">
-          <Routes>
-            <Route path="/" element={<LandingPage addBooking={addBooking}/>} />
-            <Route path="/my-booking" element={<MyBooking bookedFlights={bookedFlights}/>} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/my-profile" element={<MyProfile />} />
-          </Routes>
-        </div>
-      </div>
+      <main className="flex-grow">
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <LandingPage
+                searchRef={searchRef}
+                aboutRef={aboutRef}
+                supportRef={supportRef}
+              />
+            }
+          />
+          <Route
+            path="/home"
+            element={
+              <LandingPage
+                searchRef={searchRef}
+                aboutRef={aboutRef}
+                supportRef={supportRef}
+              />
+            }
+          />
+          <Route path="/search-flights" element={<SearchFlight />} />
+          <Route path="/about-us" element={<AboutUs />} />
+          <Route path="/support" element={<Support />} />
+          <Route path="/my-booking" element={<div className="container mx-auto px-4 py-8"><MyBooking /></div>} />
+          <Route path="/login" element={<div className="container mx-auto px-4 py-8"><Login /></div>} />
+          <Route path="/register" element={<div className="container mx-auto px-4 py-8"><Register /></div>} />
+          <Route path="/my-profile" element={<div className="container mx-auto px-4 py-8"><MyProfile /></div>} />
+          <Route path="/payment" element={<Payment />} /> 
+        </Routes>
+      </main>
+
+      <Footer />
+    </div>
+  );
+};
+
+function App() {
+  return (
+    <Router>
+      <AppWrapper />
     </Router>
   );
 }

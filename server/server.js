@@ -2,10 +2,15 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const bcrypt = require("bcryptjs");
 const app = express();
+const stripe = require('stripe')('your_stripe_secret_key');
+const cors = require('cors');
 app.use(bodyParser.json());
 const db = require("./db");
 const User = require("./user");
 require('dotenv').config();
+
+app.use(cors());
+app.use(express.json());
 
 const port = process.env.PORT || 5000;
 const apiKey = process.env.API_KEY;
@@ -96,6 +101,7 @@ app.post("/search", (req, res) => {
 app.get("/api", (req, res) => {
   res.json(fetchAPIData);
 });
+
 
 // Start server
 app.listen(port, () => {

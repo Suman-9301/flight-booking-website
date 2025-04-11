@@ -1,6 +1,6 @@
 import React from "react";
 
-function MyProfile({ bookedFlights }) {
+function MyProfile() {
 
 
   return (
@@ -13,3 +13,4 @@ function MyProfile({ bookedFlights }) {
 }
 
 export default MyProfile;
+
