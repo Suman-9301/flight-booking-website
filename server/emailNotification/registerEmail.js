@@ -106,7 +106,7 @@ exports.registerEmail = (username, email) => {
                         <li>Earn SkyMiles with every booking</li>
                     </ul>
                     
-                    <p>If you have any questions about your account or our services, our <a href="https://skybooker-flight-booking-website-frontend.onrender.com/support" style="color: #0066cc;">support team</a> is always ready to assist you.</p>
+                    <p>If you have any questions about your account or our services, our <a href="https://skybooker-flight-booking-website-frontend.onrender.com" style="color: #0066cc;">support team</a> is always ready to assist you.</p>
                     
                     <p>Happy travels,<br><strong>The SkyBooker Team</strong></p>
                 </div>
@@ -114,7 +114,7 @@ exports.registerEmail = (username, email) => {
                 <div class="footer">
                     <p>&copy; ${new Date().getFullYear()} SkyBooker. All rights reserved.</p>
                     <p>
-                        <a href="https://skybooker-flight-booking-website-frontend.onrender.com/support" style="color: #0066cc; text-decoration: none;">Contact Us</a> | 
+                        <a href="https://skybooker-flight-booking-website-frontend.onrender.com" style="color: #0066cc; text-decoration: none;">Contact Us</a> | 
                         <a href="https://skybooker-flight-booking-website-frontend.onrender.com" style="color: #0066cc; text-decoration: none;">Privacy Policy</a> | 
                         <a href="https://skybooker-flight-booking-website-frontend.onrender.com" style="color: #0066cc; text-decoration: none;">Terms of Service</a>
                     </p>
