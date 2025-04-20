@@ -81,7 +81,7 @@ function SearchFlight() {
   const totalPages = Math.ceil(apiData.length / flightsPerPage);
 
   // Change page
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+  // const paginate = (pageNumber) => setCurrentPage(pageNumber);
   const nextPage = () => setCurrentPage(prev => Math.min(prev + 1, totalPages));
   const prevPage = () => setCurrentPage(prev => Math.max(prev - 1, 1));
 

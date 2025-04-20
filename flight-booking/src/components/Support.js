@@ -32,7 +32,7 @@ const Support = () => {
               href="mailto:support@skybooker.com" 
               className="text-blue-600 hover:underline"
             >
-              support@skybooker.com
+              skybookerflyhigh@gmail.com
             </a>
             <p className="text-sm text-gray-500 mt-2">Response within 2 hours</p>
           </div>

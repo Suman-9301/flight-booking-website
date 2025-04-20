@@ -96,7 +96,7 @@ exports.registerEmail = (username, email) => {
                     
                     <p>To get started, explore our wide selection of flights and special member benefits:</p>
                     
-                    <a href="https://skybooker.com/flights" class="button">Discover Flight Deals</a>
+                    <a href="https://skybooker-flight-booking-website-frontend.onrender.com" class="button">Discover Flight Deals</a>
                     
                     <p><strong>Member Benefits:</strong></p>
                     <ul>
@@ -106,7 +106,7 @@ exports.registerEmail = (username, email) => {
                         <li>Earn SkyMiles with every booking</li>
                     </ul>
                     
-                    <p>If you have any questions about your account or our services, our <a href="https://skybooker.com/support" style="color: #0066cc;">support team</a> is always ready to assist you.</p>
+                    <p>If you have any questions about your account or our services, our <a href="https://skybooker-flight-booking-website-frontend.onrender.com/support" style="color: #0066cc;">support team</a> is always ready to assist you.</p>
                     
                     <p>Happy travels,<br><strong>The SkyBooker Team</strong></p>
                 </div>
@@ -114,9 +114,9 @@ exports.registerEmail = (username, email) => {
                 <div class="footer">
                     <p>&copy; ${new Date().getFullYear()} SkyBooker. All rights reserved.</p>
                     <p>
-                        <a href="https://skybooker.com/contact" style="color: #0066cc; text-decoration: none;">Contact Us</a> | 
-                        <a href="https://skybooker.com/privacy" style="color: #0066cc; text-decoration: none;">Privacy Policy</a> | 
-                        <a href="https://skybooker.com/terms" style="color: #0066cc; text-decoration: none;">Terms of Service</a>
+                        <a href="https://skybooker-flight-booking-website-frontend.onrender.com/support" style="color: #0066cc; text-decoration: none;">Contact Us</a> | 
+                        <a href="https://skybooker-flight-booking-website-frontend.onrender.com" style="color: #0066cc; text-decoration: none;">Privacy Policy</a> | 
+                        <a href="https://skybooker-flight-booking-website-frontend.onrender.com" style="color: #0066cc; text-decoration: none;">Terms of Service</a>
                     </p>
                     <p style="font-size:12px; color:#999;">
                         You're receiving this email because you created an account with SkyBooker.

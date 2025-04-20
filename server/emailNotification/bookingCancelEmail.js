@@ -224,10 +224,10 @@ exports.bookingCancelEmail = (username, bookingDetails) => {
                         <li>Contact your bank if you don't see the refund in 10 days</li>
                     </ul>
                     
-                    <a href="https://skybooker.com/my-bookings" class="button">View Cancelled Bookings</a>
-                    <a href="https://skybooker.com/flights" class="button" style="background-color: #fff; color: #0066cc; border: 1px solid #0066cc; margin-left: 10px;">Book New Flight</a>
+                    <a href="https://skybooker-flight-booking-website-frontend.onrender.com/my-booking" class="button">View Cancelled Bookings</a>
+                    <a href="https://skybooker-flight-booking-website-frontend.onrender.com/search-flights" class="button" style="background-color: #fff; color: #0066cc; border: 1px solid #0066cc; margin-left: 10px;">Book New Flight</a>
                     
-                    <p>We're sorry to see you go. If this was a mistake or you need any assistance, please <a href="https://skybooker.com/contact" style="color: #0066cc;">contact our support team</a> immediately.</p>
+                    <p>We're sorry to see you go. If this was a mistake or you need any assistance, please <a href="https://skybooker-flight-booking-website-frontend.onrender.com/support" style="color: #0066cc;">contact our support team</a> immediately.</p>
                     
                     <p>We hope to serve you again soon,<br><strong>The SkyBooker Team</strong></p>
                 </div>
@@ -235,9 +235,9 @@ exports.bookingCancelEmail = (username, bookingDetails) => {
                 <div class="footer">
                     <p>&copy; ${new Date().getFullYear()} SkyBooker. All rights reserved.</p>
                     <p>
-                        <a href="https://skybooker.com/contact" style="color: #0066cc; text-decoration: none;">Contact Us</a> | 
-                        <a href="https://skybooker.com/privacy" style="color: #0066cc; text-decoration: none;">Privacy Policy</a> | 
-                        <a href="https://skybooker.com/terms" style="color: #0066cc; text-decoration: none;">Terms of Service</a>
+                        <a href="https://skybooker-flight-booking-website-frontend.onrender.com/support" style="color: #0066cc; text-decoration: none;">Contact Us</a> | 
+                        <a href="https://skybooker-flight-booking-website-frontend.onrender.com" style="color: #0066cc; text-decoration: none;">Privacy Policy</a> | 
+                        <a href="https://skybooker-flight-booking-website-frontend.onrender.com" style="color: #0066cc; text-decoration: none;">Terms of Service</a>
                     </p>
                     <p style="font-size:12px; color:#999;">
                         This cancellation is effective immediately. Please keep this email for your records.

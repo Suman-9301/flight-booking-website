@@ -215,10 +215,10 @@ exports.paymentSuccessEmail = (username, bookingDetails) => {
                         <li>Arrive at least 2 hours before departure for domestic flights</li>
                     </ul>
                     
-                    <a href="https://skybooker.com/my-bookings" class="button">View Your Booking</a>
-                    <a href="https://skybooker.com/flights" class="button" style="background-color: #fff; color: #0066cc; border: 1px solid #0066cc; margin-left: 10px;">Book Another Flight</a>
+                    <a href="https://skybooker-flight-booking-website-frontend.onrender.com/my-booking" class="button">View Your Booking</a>
+                    <a href="https://skybooker-flight-booking-website-frontend.onrender.com/search-flights" class="button" style="background-color: #fff; color: #0066cc; border: 1px solid #0066cc; margin-left: 10px;">Book Another Flight</a>
                     
-                    <p>Need help with your booking? <a href="https://skybooker.com/contact" style="color: #0066cc;">Contact our support team</a>.</p>
+                    <p>Need help with your booking? <a href="https://skybooker-flight-booking-website-frontend.onrender.com/support" style="color: #0066cc;">Contact our support team</a>.</p>
                     
                     <p>Safe travels,<br><strong>The SkyBooker Team</strong></p>
                 </div>
@@ -226,9 +226,9 @@ exports.paymentSuccessEmail = (username, bookingDetails) => {
                 <div class="footer">
                     <p>&copy; ${new Date().getFullYear()} SkyBooker. All rights reserved.</p>
                     <p>
-                        <a href="https://skybooker.com/contact" style="color: #0066cc; text-decoration: none;">Contact Us</a> | 
-                        <a href="https://skybooker.com/privacy" style="color: #0066cc; text-decoration: none;">Privacy Policy</a> | 
-                        <a href="https://skybooker.com/terms" style="color: #0066cc; text-decoration: none;">Terms of Service</a>
+                        <a href="https://skybooker-flight-booking-website-frontend.onrender.com/support" style="color: #0066cc; text-decoration: none;">Contact Us</a> | 
+                        <a href="https://skybooker-flight-booking-website-frontend.onrender.com" style="color: #0066cc; text-decoration: none;">Privacy Policy</a> | 
+                        <a href="https://skybooker-flight-booking-website-frontend.onrender.com" style="color: #0066cc; text-decoration: none;">Terms of Service</a>
                     </p>
                     <p style="font-size:12px; color:#999;">
                         This is an automated message. Please do not reply to this email.
