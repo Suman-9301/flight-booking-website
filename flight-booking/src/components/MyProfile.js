@@ -9,7 +9,7 @@ const Profile = () => {
   const token = localStorage.getItem('token'); // Assume JWT is stored here
   console.log(token);
   useEffect(() => {
-    axios.get('http://localhost:5000/profile', {
+    axios.get(`${process.env.REACT_APP_BACKEND_URL}/profile`, {
       headers: { Authorization: `Bearer ${token}` },
     })
     .then(res => {
@@ -31,7 +31,7 @@ const Profile = () => {
   };
 
   const handleSave = () => {
-    axios.put('http://localhost:5000/profile', form, {
+    axios.put(`${process.env.REACT_APP_BACKEND_URL}/profile`, form, {
       headers: { Authorization: `Bearer ${token}` },
     })
     .then(res => {

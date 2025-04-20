@@ -12,7 +12,7 @@ const MyBookings = () => {
     const fetchBookings = async () => {
       try {
         const token = localStorage.getItem("token");
-        const response = await axios.get("http://localhost:5000/my-bookings", {
+        const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/my-bookings`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setBookings(response.data);
@@ -63,7 +63,7 @@ const MyBookings = () => {
     try {
       const token = localStorage.getItem("token");
       await axios.put(
-        `http://localhost:5000/cancel-booking/by-payment/${paymentId}`,
+        `${process.env.REACT_APP_BACKEND_URL}/cancel-booking/by-payment/${paymentId}`,
         {},
         {
           headers: { Authorization: `Bearer ${token}` },

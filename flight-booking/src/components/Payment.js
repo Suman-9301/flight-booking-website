@@ -49,7 +49,7 @@ const Payment = () => {
   const getSessionId = async () => {
     try {
       const token = localStorage.getItem("token");
-      const res = await axios.post("http://localhost:5000/pay", {
+      const res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/pay`, {
         amount: flight.price
       }, {
         headers: {
@@ -72,7 +72,7 @@ const Payment = () => {
     try {
       const token = localStorage.getItem("token");
 
-      const res = await axios.post("http://localhost:5000/verify", {
+      const res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/verify`, {
         orderId,
         flight,
         totalAmount: flight.price,
