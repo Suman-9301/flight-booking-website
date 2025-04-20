@@ -29,17 +29,15 @@ function Login() {
       });
 
       const result = await response.json();
-      console.log("Login Result: ", result);
+      // console.log("Login Result: ", result);
 
       if (response.ok) {
-        if (result.username) {
-          localStorage.setItem("username", result.username);
-          localStorage.setItem("email", result.email);
+          localStorage.setItem("token", result.token);
+          localStorage.setItem("username", result.user.username);
+          localStorage.setItem("email", result.user.email);
+          localStorage.setItem("mobile", result.user.mobile);
           alert("Login successful!");
           navigate("/");
-        } else {
-          alert("No username found in response.");
-        }
       } else {
         alert("Invalid credentials. Please try again.");
         console.error(result);
@@ -48,7 +46,7 @@ function Login() {
       console.error("Error during login:", error);
     }
   };
-
+  
   return (
     <div className="max-w-lg mx-auto bg-gray-100 shadow-xl outline outline-black/5 rounded-lg p-8 my-10">
       <h1 className="text-3xl font-extrabold text-primary mb-6 text-center">

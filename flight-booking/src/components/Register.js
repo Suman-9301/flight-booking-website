@@ -36,7 +36,10 @@ function Register() {
       const result = await response.json();
       
       if (response.ok) {
-        localStorage.setItem("username", username);
+        localStorage.setItem("token", result.token);
+        localStorage.setItem("username", result.user.username);
+        localStorage.setItem("email", result.user.email);
+        localStorage.setItem("mobile", result.user.mobile);
         alert("Registration successful!");
         navigate("/");
       } else {

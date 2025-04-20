@@ -29,7 +29,7 @@ const AppWrapper = () => {
   const isHomePage = location.pathname === "/" || location.pathname === "/home";
 
   return (
-    <div className="min-h-screen bg-landing text-textDark flex flex-col">
+    <div className="min-h-screen bg-landing text-textDark flex flex-col ">
       <Navbar
         scrollToSearch={isHomePage ? scrollToSearch : undefined}
         scrollToAbout={isHomePage ? scrollToAbout : undefined}

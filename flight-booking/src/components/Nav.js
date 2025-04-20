@@ -32,7 +32,7 @@ const Navbar = ({ scrollToSearch, scrollToAbout, scrollToSupport }) => {
   const isHomePage = location.pathname === "/";
 
   return (
-    <nav className="bg-primary text-textLight drop-shadow-2xl z-40 relative">
+    <nav className="bg-primary text-textLight drop-shadow-2xl z-40 relative px-4">
       <div className="container mx-auto px-4 py-3 flex justify-between items-center">
         {/* Logo */}
         <Link to="/" className="flex items-center">
