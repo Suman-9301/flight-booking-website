@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import axios from "axios";
 import { load } from '@cashfreepayments/cashfree-js';
+import SeatingArrangement from './SeatingArrangement';
 
 const Payment = () => {
   const [cfInstance, setCfInstance] = useState(null);
@@ -127,136 +128,158 @@ const Payment = () => {
     }
   };
 
+
+  const [showSeats, setShowSeats] = useState(false);
+  const handleToggle = () => setShowSeats(prev => !prev);
+  console.log("Flight Data:", flight);
+
   if (!flight) return <div className="text-center py-8">Loading flight details...</div>;
 
   return (
+    <>
     <div className="container mx-auto px-4 py-8 max-w-2xl">
-      <h1 className="text-3xl font-bold mb-6">Complete Your Booking</h1>
+      <h1 className="text-3xl font-bold mb-6 text-center text-gray-600">Complete Your Booking</h1>
 
- 
+      <div className="bg-gray-100 shadow-xl outline outline-black/5 rounded-lg p-8  mb-8 border border-gray-200">
+        <h2 className="text-2xl font-bold text-gray-600 mb-6 pb-2 border-b border-gray-100 ">Passenger Information</h2>
+        <form className="space-y-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Full Name */}
+            <div>
+              <label htmlFor="passengerName" className="block text-sm font-medium text-gray-700 mb-1">
+                Full Name <span className="text-red-500">*</span>
+              </label>
+              <input
+                id="passengerName"
+                name="passengerName"
+                placeholder="John Doe"
+                className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
+                onChange={handleFormChange}
+                required
+              />
+            </div>
 
-<div className="bg-gray-100 shadow-xl outline outline-black/5 rounded-lg p-8  mb-8 border border-gray-200">
-  <h2 className="text-2xl font-bold text-gray-800 mb-6 pb-2 border-b border-gray-100">Passenger Information</h2>
-  <form className="space-y-6">
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-      {/* Full Name */}
-      <div>
-        <label htmlFor="passengerName" className="block text-sm font-medium text-gray-700 mb-1">
-          Full Name <span className="text-red-500">*</span>
-        </label>
-        <input
-          id="passengerName"
-          name="passengerName"
-          placeholder="John Doe"
-          className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
-          onChange={handleFormChange}
-          required
-        />
-      </div>
+            {/* Gender */}
+            <div>
+              <label htmlFor="gender" className="block text-sm font-medium text-gray-700 mb-1">
+                Gender <span className="text-red-500">*</span>
+              </label>
+              <select
+                id="gender"
+                name="gender"
+                className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
+                onChange={handleFormChange}
+                required
+              >
+                <option value="">Select Gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
 
-      {/* Gender */}
-      <div>
-        <label htmlFor="gender" className="block text-sm font-medium text-gray-700 mb-1">
-          Gender <span className="text-red-500">*</span>
-        </label>
-        <select
-          id="gender"
-          name="gender"
-          className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
-          onChange={handleFormChange}
-          required
+            {/* Date of Birth */}
+            <div>
+              <label htmlFor="dob" className="block text-sm font-medium text-gray-700 mb-1">
+                Date of Birth <span className="text-red-500">*</span>
+              </label>
+              <input
+                type="date"
+                id="dob"
+                name="dob"
+                className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
+                onChange={handleFormChange}
+                required
+              />
+            </div>
+
+            {/* Nationality */}
+            <div>
+              <label htmlFor="nationality" className="block text-sm font-medium text-gray-700 mb-1">
+                Nationality <span className="text-red-500">*</span>
+              </label>
+              <input
+                id="nationality"
+                name="nationality"
+                placeholder="e.g. Indian"
+                className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
+                onChange={handleFormChange}
+                required
+              />
+            </div>
+
+            {/* Mobile Number */}
+            <div>
+              <label htmlFor="mobile" className="block text-sm font-medium text-gray-700 mb-1">
+                Mobile Number <span className="text-red-500">*</span>
+              </label>
+              <input
+                id="mobile"
+                name="mobile"
+                type="tel"
+                placeholder="+91 9876543210"
+                className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
+                onChange={handleFormChange}
+                required
+              />
+            </div>
+
+            {/* Email */}
+            <div>
+              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+                Email <span className="text-red-500">*</span>
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="john@example.com"
+                className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
+                onChange={handleFormChange}
+                required
+              />
+            </div>
+
+            {/* Seat Preference */}
+            <div>
+              <label htmlFor="seatPreference" className="block text-sm font-medium text-gray-700 mb-1">
+                Seat Preference <span className="text-red-500">*</span>
+              </label>
+              <select
+                id="seatPreference"
+                name="seatPreference"
+                className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
+                onChange={handleFormChange}
+                required
+              >
+                <option value="">Select Preference</option>
+                <option value="Window">Window</option>
+                <option value="Aisle">Aisle</option>
+                <option value="Middle">Middle</option>
+              </select>
+            </div>
+            <button
+          onClick={handleToggle}
+          className="mt-4 px-4  w-full bg-gray-500 text-white rounded text-lg"
         >
-          <option value="">Select Gender</option>
-          <option value="Male">Male</option>
-          <option value="Female">Female</option>
-          <option value="Other">Other</option>
-        </select>
-      </div>
+          {showSeats ? "Hide Seats" : "Choose Seats"}
+        </button>
+          </div>
 
-      {/* Date of Birth */}
-      <div>
-        <label htmlFor="dob" className="block text-sm font-medium text-gray-700 mb-1">
-          Date of Birth <span className="text-red-500">*</span>
-        </label>
-        <input
-          type="date"
-          id="dob"
-          name="dob"
-          className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
-          onChange={handleFormChange}
-          required
-        />
-      </div>
-
-      {/* Nationality */}
-      <div>
-        <label htmlFor="nationality" className="block text-sm font-medium text-gray-700 mb-1">
-          Nationality <span className="text-red-500">*</span>
-        </label>
-        <input
-          id="nationality"
-          name="nationality"
-          placeholder="e.g. Indian"
-          className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
-          onChange={handleFormChange}
-          required
-        />
-      </div>
-
-      {/* Mobile Number */}
-      <div>
-        <label htmlFor="mobile" className="block text-sm font-medium text-gray-700 mb-1">
-          Mobile Number <span className="text-red-500">*</span>
-        </label>
-        <input
-          id="mobile"
-          name="mobile"
-          type="tel"
-          placeholder="+91 9876543210"
-          className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
-          onChange={handleFormChange}
-          required
-        />
-      </div>
-
-      {/* Email */}
-      <div>
-        <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-          Email <span className="text-red-500">*</span>
-        </label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          placeholder="john@example.com"
-          className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
-          onChange={handleFormChange}
-          required
-        />
-      </div>
-
-      {/* Seat Preference */}
-      <div>
-        <label htmlFor="seatPreference" className="block text-sm font-medium text-gray-700 mb-1">
-          Seat Preference <span className="text-red-500">*</span>
-        </label>
-        <select
-          id="seatPreference"
-          name="seatPreference"
-          className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
-          onChange={handleFormChange}
-          required
-        >
-          <option value="">Select Preference</option>
-          <option value="Window">Window</option>
-          <option value="Aisle">Aisle</option>
-          <option value="Middle">Middle</option>
-        </select>
+        </form>
       </div>
     </div>
-  </form>
-</div>
+    
+      <div>
+          {/* Conditionally show seat selection */}
+          {showSeats && (
+            <div className="mt-6">
+              <SeatingArrangement flightId={flight.flights[0].flight_number} />
+            </div>
+          )}
+      </div>
 
+    <div className="container mx-auto px-4 py-8 max-w-2xl">
       {/* Flight Summary */}
       <div className="bg-gray-100 rounded-lg shadow-lg p-6 mb-6">
         <h2 className="text-xl font-semibold mb-4">Flight Details</h2>
@@ -277,6 +300,7 @@ const Payment = () => {
         Pay Now
       </button>
     </div>
+    </>
   );
 };
 

@@ -40,6 +40,7 @@ function Register() {
         localStorage.setItem("username", result.user.username);
         localStorage.setItem("email", result.user.email);
         localStorage.setItem("mobile", result.user.mobile);
+        localStorage.setItem("userId", result.user.id);
         alert("Registration successful!");
         navigate("/");
       } else {

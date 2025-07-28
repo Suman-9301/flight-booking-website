@@ -24,7 +24,7 @@ const Profile = () => {
       console.log(err);
       alert("Failed to load profile. Please login again.");
     });
-  }, []);
+  }, [token]);
 
   const handleChange = e => {
     setForm({ ...form, [e.target.name]: e.target.value });

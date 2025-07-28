@@ -5,13 +5,11 @@ const app = express();
 app.use(bodyParser.json());
 
 const cors = require('cors');
-// app.use(cors({
-//   origin: "http://localhost:3000", // Allow frontend origin
-//   credentials: true, // Allow cookies (if using sessions)
-// }));
+
 const db = require("./db");
 const User = require("./user");
 const Booking = require("./booking");
+const Seat = require("./seat");
 const axios = require("axios");
 const crypto = require('crypto');
 require('dotenv').config();
@@ -35,7 +33,7 @@ app.use(express.json());
 // POST route for user registration
 app.post("/register", async (req, res) => {
   const { username, email, mobile, password } = req.body;
-
+  
   try {
     // Check if email already exists
     const existingUser = await User.findOne({ email });
@@ -256,7 +254,8 @@ app.post('/verify',jwtAuthMiddleware, async (req, res) => {
     if (paymentStatus === 'PAID') {
 
       const mainFlight = flight.flights[0]; 
-
+      const flightNumber = mainFlight.flight_number.replace(/\s+/g, '');
+      console.log('Flight Number:', flightNumber);
       const simplifiedFlight = {
         airline: mainFlight.airline,
         airline_logo: mainFlight.airline_logo,
@@ -264,7 +263,8 @@ app.post('/verify',jwtAuthMiddleware, async (req, res) => {
         to: mainFlight.arrival_airport?.name || 'Unknown',
         departure_time: mainFlight.departure_airport?.time ? new Date(mainFlight.departure_airport.time) : new Date(),
         arrival_time: mainFlight.arrival_airport?.time ? new Date(mainFlight.arrival_airport.time) : new Date(),
-        flight_number: mainFlight.flight_number
+        // flight_number: mainFlight.flight_number
+        flight_number: flightNumber
       };
       
       
@@ -443,6 +443,47 @@ app.get('/download/:bookingId',jwtAuthMiddleware, async (req, res) => {
 });
 
 
+//seat booking
+app.get("/seats/:flightId", async (req, res) => {
+  const { flightId } = req.params;
+  const seats = await Seat.find({ flightId });
+
+  if (seats.length === 0) {
+    const defaultSeats = [];
+    const rows = ["A", "B", "C", "D"];
+    for (let row of rows) {
+      for (let i = 1; i <= 20; i++) {
+        defaultSeats.push({
+          seatId: `${i}${row}`,
+          flightId,
+          status: "unbooked",
+          bookedBy: null,
+        });
+      }
+    }
+
+    await Seat.insertMany(defaultSeats);
+    return res.json(defaultSeats);
+  }
+
+  return res.json(seats);
+});
+
+app.post("/seats/book", async (req, res) => {
+  const { seatIds, flightId, userId } = req.body;
+
+  try {
+    const updated = await Seat.updateMany(
+      { seatId: { $in: seatIds }, flightId, status: "unbooked" },
+      { $set: { status: "booked", bookedBy: userId } }
+    );
+
+    return res.json({ message: "Seats booked Successfully", updatedCount: updated.modifiedCount });
+  } catch (err) {
+    console.error("Booking failed:", err);
+    return res.status(500).json({ error: "Booking failed" });
+  }
+});
 
 
 // Start server

@@ -59,11 +59,9 @@ function SearchFlight() {
 
   const handleBookNow = (flight) => {
     if (isLoggedIn) {
-      // Save flight data and navigate to payment
       localStorage.setItem('selectedFlight', JSON.stringify(flight));
       navigate('/payment');
     } else {
-      // Save flight data and redirect to login
       localStorage.setItem('flightAfterLogin', JSON.stringify(flight));
       navigate('/login');
       alert('Please login to complete your booking');
@@ -81,7 +79,6 @@ function SearchFlight() {
   const totalPages = Math.ceil(apiData.length / flightsPerPage);
 
   // Change page
-  // const paginate = (pageNumber) => setCurrentPage(pageNumber);
   const nextPage = () => setCurrentPage(prev => Math.min(prev + 1, totalPages));
   const prevPage = () => setCurrentPage(prev => Math.max(prev - 1, 1));
 

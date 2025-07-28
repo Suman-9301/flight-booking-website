@@ -29,13 +29,14 @@ function Login() {
       });
 
       const result = await response.json();
-      // console.log("Login Result: ", result);
+      console.log("Login Result: ", result);
 
       if (response.ok) {
           localStorage.setItem("token", result.token);
           localStorage.setItem("username", result.user.username);
           localStorage.setItem("email", result.user.email);
           localStorage.setItem("mobile", result.user.mobile);
+          localStorage.setItem("userId", result.user.id);
           alert("Login successful!");
           navigate("/");
       } else {

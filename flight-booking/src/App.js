@@ -14,12 +14,13 @@ import Footer from "./components/Footer";
 import './App.css';
 import MyProfile from './components/MyProfile';
 import Payment from './components/Payment';
-
+import SeatingArrangement from './components/SeatingArrangement';
 const AppWrapper = () => {
   const location = useLocation();
   const searchRef = useRef(null);
   const aboutRef = useRef(null);
   const supportRef = useRef(null);
+
 
 
   const scrollToSearch = () => searchRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -28,6 +29,7 @@ const AppWrapper = () => {
 
   const isHomePage = location.pathname === "/" || location.pathname === "/home";
 
+  
   return (
     <div className="min-h-screen bg-landing text-textDark flex flex-col ">
       <Navbar
@@ -66,6 +68,7 @@ const AppWrapper = () => {
           <Route path="/register" element={<div className="container mx-auto px-4 py-8"><Register /></div>} />
           <Route path="/my-profile" element={<div className="container mx-auto px-4 py-8"><MyProfile /></div>} />
           <Route path="/payment" element={<Payment />} /> 
+          <Route path="/seats" element={<SeatingArrangement />} />
         </Routes>
       </main>
 
