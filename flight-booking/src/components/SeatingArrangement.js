@@ -15,11 +15,11 @@ const SeatLayout = ({flightId}) => {
   useEffect(() => {
     const userId = localStorage.getItem("userId");
     if(!userId){
-      navigate('/login');
+      navigate(`${process.env.REACT_APP_BACKEND_URL}/login`);
       return;
     }
     axios
-      .get(`/seats/${flightId}`)
+      .get(`${process.env.REACT_APP_BACKEND_URL}/seats/${flightId}`)
       .then((res) => {
         setSeats(res.data);
       })
@@ -27,7 +27,7 @@ const SeatLayout = ({flightId}) => {
   }, [flightId,navigate]);
 
   if (!userId) {
-    navigate("/login");
+    navigate(`${process.env.REACT_APP_BACKEND_URL}/login`);
     return;
   }
 
@@ -50,14 +50,14 @@ const SeatLayout = ({flightId}) => {
     if (selected.length === 0) return;
 
     axios
-      .post(`/seats/book`, {
+      .post(`${process.env.REACT_APP_BACKEND_URL}/seats/book`, {
         seatIds: selected,
         flightId : flightId,
         userId: userId, 
       })
       .then(() => {
         alert("Seats booked successfully!");
-        navigate("/payment");
+        navigate(`${process.env.REACT_APP_BACKEND_URL}/payment`);
       })
       .catch((err) => console.error(err));
   };
