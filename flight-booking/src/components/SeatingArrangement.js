@@ -57,7 +57,6 @@ const SeatLayout = ({flightId}) => {
       })
       .then(() => {
         alert("Seats booked successfully!");
-        navigate(`${process.env.REACT_APP_BACKEND_URL}/payment`);
       })
       .catch((err) => console.error(err));
   };
