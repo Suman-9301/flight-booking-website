@@ -259,11 +259,12 @@ const Payment = () => {
               </select>
             </div>
             <button
-          onClick={handleToggle}
-          className="mt-4 px-4  w-full bg-gray-500 text-white rounded text-lg"
-        >
-          {showSeats ? "Hide Seats" : "Choose Seats"}
-        </button>
+              type="button"
+              onClick={handleToggle}
+              className="mt-4 px-4  w-full bg-gray-500 text-white rounded text-lg"
+            >
+              {showSeats ? "Hide Seats" : "Choose Seats"}
+            </button>
           </div>
 
         </form>
